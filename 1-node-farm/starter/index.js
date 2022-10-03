@@ -1,5 +1,5 @@
 const fs = require('fs');
-const server = require('server');
+const http = require('http');
 
 const hello ="Hello World";
 
@@ -33,3 +33,18 @@ fs.readFile('./txt/start.txt' , 'utf-8' , (err,data1) =>{
         });
     })
 });
+
+
+
+////////////////////////////////////
+// server
+
+
+
+const server = http.createServer((req,res)=>{
+
+});
+
+server.listen(port , (err)=>{
+    
+})
