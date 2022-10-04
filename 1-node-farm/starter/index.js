@@ -1,6 +1,6 @@
 const fs = require('fs');
 const http = require('http');
-
+const url = require('url');
 // const hello ="Hello World";
 
 
@@ -42,7 +42,16 @@ const http = require('http');
 const port = 8000;
 
 const server = http.createServer((req,res)=>{
-    res.end('hello from server!!');
+    const pathName = req.url;
+
+    if (pathName==='/' || pathName=== '/overview') {
+        res.end('this is overview')
+    }else if( pathName === '/product'){
+        res.end('this is Product');
+    }else{
+        res.writeHead(404);
+        res.end('Page not Found');
+    }
 });
 
 server.listen(port ,'127.0.0.1', (err)=>{
