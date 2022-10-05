@@ -5,7 +5,7 @@ const url = require('url');
 
 
 // // reading a file
-// const file = fs.readFileSync('./txt/input.txt', 'utf-8')
+const file = fs.readFileSync('./txt/input.txt', 'utf-8')
 // console.log(file);
 
 // // writing a file
@@ -45,7 +45,7 @@ const server = http.createServer((req,res)=>{
     const pathName = req.url;
 
     if (pathName==='/' || pathName=== '/overview') {
-        res.end('this is overview')
+        res.end('hello server overview');
     }else if( pathName === '/product'){
         res.end('this is Product');
     }else{
