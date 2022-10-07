@@ -43,17 +43,26 @@ const port = 8000;
 
 const server = http.createServer((req,res)=>{
     const pathName = req.url;
-
     if (pathName==='/' || pathName=== '/overview') {
         res.end('hello server overview');
     }else if( pathName === '/product'){
         res.end('this is Product');
+    }else if( pathName === '/api'){
+        fs.readFile(`${__dirname}/dev-data/data.json`,'utf-8',(err,data)=>{
+            const productdata = JSON.parse(data)
+            // console.log(productdata);
+            res.writeHead(200,{'Content-type':'application/json'})
+            // console.log(data);
+            res.end(data);
+            console.log(data.id);
+        })
     }else{
         res.writeHead(404);
         res.end('Page not Found');
     }
 });
 
-server.listen(port ,'127.0.0.1', (err)=>{
+server.listen(port  ,'127.0.0.1', (err)=>{
  console.log(`hello`);
+
 });
