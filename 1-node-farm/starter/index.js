@@ -39,12 +39,8 @@ const file = fs.readFileSync('./txt/input.txt', 'utf-8')
 ////////////////////////////////////
 // server
 
-
-fs.readFile(`${__dirname}/dev-data/data.json`,'utf-8',(err,data)=>{
-    const productdata = JSON.parse(data)
-    // res.writeHead(200,{'Content-type':'application/json'})
-    // res.end(data); 
-})
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`,'utf-8');
+const dataObj = JSON.parse(data)
 
 const port = 8000;
 
@@ -55,7 +51,8 @@ const server = http.createServer((req,res)=>{
     }else if( pathName === '/product'){
         res.end('this is Product');
     }else if( pathName === '/api'){
-
+        res.writeHead(200,{'Content-type':'application/json'})
+        res.end(data)
     }else{
         res.writeHead(404);
         res.end('Page not Found');
