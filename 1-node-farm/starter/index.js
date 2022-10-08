@@ -40,19 +40,33 @@ const file = fs.readFileSync('./txt/input.txt', 'utf-8')
 // server
 
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`,'utf-8');
+const tempOverview =  fs.readFileSync(`${__dirname}/templates/overview.html`,'utf-8');
+const tempCard =  fs.readFileSync(`${__dirname}/templates/card.html`,'utf-8');
+const tempProduct =  fs.readFileSync(`${__dirname}/templates/product.html`,'utf-8');
+
+
 const dataObj = JSON.parse(data)
 
 const port = 8000;
 
 const server = http.createServer((req,res)=>{
     const pathName = req.url;
+
+        //overview
     if (pathName==='/' || pathName=== '/overview') {
-        res.end('hello server overview');
+        res.writeHead(200,{'Content-type':'text/html'})
+        res.end(tempOverview);
+
+        //product
     }else if( pathName === '/product'){
         res.end('this is Product');
+
+        //api
     }else if( pathName === '/api'){
         res.writeHead(200,{'Content-type':'application/json'})
         res.end(data)
+
+        //not-found
     }else{
         res.writeHead(404);
         res.end('Page not Found');
