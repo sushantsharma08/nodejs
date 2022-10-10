@@ -60,20 +60,22 @@ const dataObj = JSON.parse(data)
 const port = 8000;
 
 const server = http.createServer((req,res)=>{
-    const pathName = req.url;
+
+    const {query,pathname}=url.parse(req.url,true);
 
         //overview
-    if (pathName==='/' || pathName=== '/overview') {
+    if (pathname==='/' || pathname=== '/overview') {
         res.writeHead(200,{'Content-type':'text/html'})
         const cardshtml = dataObj.map(el=>replaceTemplate(tempCard,el)).join('')
         const output = tempOverview.replace(/{%PRODUCT_CARDS%}/g,cardshtml)
         res.end(output);
         //product
-    }else if( pathName === '/product'){
+    }else if( pathname === '/product'){
+        console.log(query);
         res.end('this is Product');
 
         //api
-    }else if( pathName === '/api'){
+    }else if( pathname === '/api'){
         res.writeHead(200,{'Content-type':'application/json'})
         res.end(data)
 
