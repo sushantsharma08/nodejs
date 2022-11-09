@@ -72,6 +72,15 @@ app.patch('/api/v1/tours/:id',(req,res)=>{
     console.log(req.body.duration*1);
 })
 
+app.delete('/api/v1/tours/:id',(req,res)=>{
+    res.status(204).json({
+        status:"success",
+        data:null
+    })
+    
+    console.log(req.body.duration*1);
+})
+
 const port = 3000
 app.listen(port, () => {
     console.log(`running on port ${port}...`);
