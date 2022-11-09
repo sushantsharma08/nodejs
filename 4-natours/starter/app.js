@@ -2,18 +2,10 @@ const express = require('express');
 const fs = require('fs');
 const app = express();
 app.use(express.json());
-// app.get('/',(req,res)=>{
-//     res
-//     .status(200)
-//     .json({message:'Hello from server side', app:'Natours'});
-// });
 
-// app.post('/',(req,res)=>{
-//     res.send('You can post to this input  ')
-// })
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`))
 
-app.get('/api/v1/tours', (req, res) => {
+const getAllTours = (req, res) => {
     res
         .status(200)
         .json({
@@ -23,9 +15,9 @@ app.get('/api/v1/tours', (req, res) => {
                 tours: tours
             }
         })
-})
+}
 
-app.get('/api/v1/tours/:id', (req, res) => {
+const getTour =  (req, res) => {
     console.log(req.params.id);
 
     const id = Number(req.params.id)
@@ -37,9 +29,9 @@ app.get('/api/v1/tours/:id', (req, res) => {
             tour
         }
     })
-    })
+    }
 
-app.post('/api/v1/tours', (req, res) => {
+const createTour =  (req, res) => {
     // console.log(req.body);
     const newid = tours[tours.length - 1].id + 1;
     const newTour = Object.assign({ id: newid }, req.body);
@@ -56,9 +48,9 @@ app.post('/api/v1/tours', (req, res) => {
                 }
             })
     })
-})
+}
 
-app.patch('/api/v1/tours/:id',(req,res)=>{
+const updateTour = (req,res)=>{
 
     const tour = tours.find(el=>el.id===req.params.id*1);
      tour.duration = req.body.duration
@@ -70,16 +62,26 @@ app.patch('/api/v1/tours/:id',(req,res)=>{
     })
     
     console.log(req.body.duration*1);
-})
+}
 
-app.delete('/api/v1/tours/:id',(req,res)=>{
+const deleteTour = (req,res)=>{
     res.status(204).json({
         status:"success",
         data:null
     })
     
     console.log(req.body.duration*1);
-})
+}
+
+app.get('/api/v1/tours',getAllTours)
+
+app.get('/api/v1/tours/:id',getTour)
+
+app.post('/api/v1/tours', createTour)
+
+app.patch('/api/v1/tours/:id', updateTour)
+
+app.delete('/api/v1/tours/:id', deleteTour)
 
 const port = 3000
 app.listen(port, () => {
