@@ -17,21 +17,21 @@ const getAllTours = (req, res) => {
         })
 }
 
-const getTour =  (req, res) => {
+const getTour = (req, res) => {
     console.log(req.params.id);
 
     const id = Number(req.params.id)
-    const tour = tours.find(el =>el.id===id)
+    const tour = tours.find(el => el.id === id)
 
     res.json({
-        status:'success',
-        data:{
+        status: 'success',
+        data: {
             tour
         }
     })
-    }
+}
 
-const createTour =  (req, res) => {
+const createTour = (req, res) => {
     // console.log(req.body);
     const newid = tours[tours.length - 1].id + 1;
     const newTour = Object.assign({ id: newid }, req.body);
@@ -50,38 +50,46 @@ const createTour =  (req, res) => {
     })
 }
 
-const updateTour = (req,res)=>{
+const updateTour = (req, res) => {
 
-    const tour = tours.find(el=>el.id===req.params.id*1);
-     tour.duration = req.body.duration
+    const tour = tours.find(el => el.id === req.params.id * 1);
+    tour.duration = req.body.duration
     res.status(200).json({
-        status:"success",
-        data:{
+        status: "success",
+        data: {
             tour
         }
     })
-    
-    console.log(req.body.duration*1);
+
+    console.log(req.body.duration * 1);
 }
 
-const deleteTour = (req,res)=>{
+const deleteTour = (req, res) => {
     res.status(204).json({
-        status:"success",
-        data:null
+        status: "success",
+        data: null
     })
-    
-    console.log(req.body.duration*1);
+
+    console.log(req.body.duration * 1);
 }
 
-app.get('/api/v1/tours',getAllTours)
+// app.get('/api/v1/tours', getAllTours)
+// app.get('/api/v1/tours/:id', getTour)
+// app.post('/api/v1/tours', createTour)
+// app.patch('/api/v1/tours/:id', updateTour)
+// app.delete('/api/v1/tours/:id', deleteTour)
 
-app.get('/api/v1/tours/:id',getTour)
+app
+    .route('/api/v1/tours')
+    .get(getAllTours)
+    .post(createTour)
 
-app.post('/api/v1/tours', createTour)
+app
+    .route('/api/v1/tours/:id')
+    .get(getTour)
+    .patch(updateTour)
+    .delete(deleteTour)
 
-app.patch('/api/v1/tours/:id', updateTour)
-
-app.delete('/api/v1/tours/:id', deleteTour)
 
 const port = 3000
 app.listen(port, () => {
