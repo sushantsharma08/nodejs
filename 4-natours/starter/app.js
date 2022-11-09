@@ -52,9 +52,24 @@ app.post('/api/v1/tours', (req, res) => {
                 "status": "success",
                 "data": {
                     tour: newTour
+
                 }
             })
     })
+})
+
+app.patch('/api/v1/tours/:id',(req,res)=>{
+
+    const tour = tours.find(el=>el.id===req.params.id*1);
+     tour.duration = req.body.duration
+    res.status(200).json({
+        status:"success",
+        data:{
+            tour
+        }
+    })
+    
+    console.log(req.body.duration*1);
 })
 
 const port = 3000
