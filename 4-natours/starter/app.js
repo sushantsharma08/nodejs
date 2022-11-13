@@ -1,9 +1,11 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
-app.use(express.json());
 
 app.use(morgan('dev'))
+app.use(morgan('tiny'))
+
+app.use(express.json());
 app.use((req,res,next)=>{
     console.log(`hello from middleware😁`);
     next();
