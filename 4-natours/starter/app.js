@@ -6,11 +6,11 @@ app.use(morgan('dev'))
 app.use(morgan('tiny'))
 
 app.use(express.json());
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
     console.log(`hello from middleware😁`);
     next();
 })
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
     req.requestTime = new Date().toISOString()
     next();
 })
