@@ -1,9 +1,9 @@
 const express = require('express');
 const fs = require('fs');
+const morgan = require('morgan');
 const app = express();
 
 app.use(morgan('dev'))
-app.use(morgan('tiny'))
 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -26,7 +26,7 @@ const getAllTours = (req, res) => {
             status: 'success',
             data: {
                 tours: tours
-            }
+            } 
         })
 }
 
