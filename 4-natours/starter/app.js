@@ -26,7 +26,7 @@ const getAllTours = (req, res) => {
             status: 'success',
             data: {
                 tours: tours
-            } 
+            }
         })
 }
 
@@ -86,6 +86,42 @@ const deleteTour = (req, res) => {
     console.log(req.body.duration * 1);
 }
 
+
+// ///////// USER FUNTIONS
+
+const getAllUsers=(req,res)=>{
+    res.status(500).json({
+        staus:'error',
+        message:'route no implemented yet!!!'
+    })
+}
+const createUser=(req,res)=>{
+    res.status(500).json({
+        staus:'error',
+        message:'route no implemented yet!!!'
+    })
+}
+const getUser=(req,res)=>{
+    res.status(500).json({
+        staus:'error',
+        message:'route no implemented yet!!!'
+    })
+}
+const updateUser=(req,res)=>{
+    res.status(500).json({
+        staus:'error',
+        message:'route no implemented yet!!!'
+    })
+}
+const deleteUser=(req,res)=>{
+    res.status(500).json({
+        staus:'error',
+        message:'route no implemented yet!!!'
+    })
+}
+
+
+
 // app.get('/api/v1/tours', getAllTours)
 // app.get('/api/v1/tours/:id', getTour)
 // app.post('/api/v1/tours', createTour)
@@ -102,6 +138,17 @@ app
     .get(getTour)
     .patch(updateTour)
     .delete(deleteTour)
+
+app
+    .route('/api/v1/users')
+    .get(getAllUsers)
+    .post(createUser)
+
+app.route('/api/v1/users/:id')
+    .get(getUser)
+    .patch(updateUser)
+    .delete(deleteUser)
+
 
 
 const port = 3000
