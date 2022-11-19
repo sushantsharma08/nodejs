@@ -89,34 +89,34 @@ const deleteTour = (req, res) => {
 
 // ///////// USER FUNTIONS
 
-const getAllUsers=(req,res)=>{
+const getAllUsers = (req, res) => {
     res.status(500).json({
-        staus:'error',
-        message:'route no implemented yet!!!'
+        staus: 'error',
+        message: 'route no implemented yet!!!'
     })
 }
-const createUser=(req,res)=>{
+const createUser = (req, res) => {
     res.status(500).json({
-        staus:'error',
-        message:'route no implemented yet!!!'
+        staus: 'error',
+        message: 'route no implemented yet!!!'
     })
 }
-const getUser=(req,res)=>{
+const getUser = (req, res) => {
     res.status(500).json({
-        staus:'error',
-        message:'route no implemented yet!!!'
+        staus: 'error',
+        message: 'route no implemented yet!!!'
     })
 }
-const updateUser=(req,res)=>{
+const updateUser = (req, res) => {
     res.status(500).json({
-        staus:'error',
-        message:'route no implemented yet!!!'
+        staus: 'error',
+        message: 'route no implemented yet!!!'
     })
 }
-const deleteUser=(req,res)=>{
+const deleteUser = (req, res) => {
     res.status(500).json({
-        staus:'error',
-        message:'route no implemented yet!!!'
+        staus: 'error',
+        message: 'route no implemented yet!!!'
     })
 }
 
