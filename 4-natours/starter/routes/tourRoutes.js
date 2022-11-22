@@ -7,7 +7,7 @@ router.param('id',tourcontroller.checkId)
 router
 .route('/')
 .get(tourcontroller.getAllTours)
-.post(tourcontroller.createTour)
+.post(tourcontroller.checkbody,tourcontroller.createTour)
 
 router
 .route('/:id')
