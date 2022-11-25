@@ -5,14 +5,14 @@ const router = express.Router()
 // router.param('id',tourcontroller.checkId)
 
 router
-.route('/')
-.get(tourcontroller.getAllTours)
-.post(tourcontroller.checkbody,tourcontroller.createTour)
+    .route('/')
+    .get(tourcontroller.getAllTours)
+    .post(tourcontroller.createTour)
 
 router
-.route('/:id')
-.get(tourcontroller.getTour)
-.patch(tourcontroller.updateTour)
-.delete(tourcontroller.deleteTour)
+    .route('/:id')
+    .get(tourcontroller.getTour)
+    .patch(tourcontroller.updateTour)
+    .delete(tourcontroller.deleteTour)
 
 module.exports = router;
