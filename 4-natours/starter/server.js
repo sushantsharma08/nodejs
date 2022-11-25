@@ -13,25 +13,13 @@ const DB = process.env.DATABASE.replace(
 mongoose.connect(DB,{
     useNewUrlParser:true,
     useCreateIndex:true,
-    UseFindAndModify:false
+    // UseFindAndModify:false
 }).then(con=>{
-    console.log(con.connections);
+    // console.log(con.connections);
     console.log(`DB connection successful`);
 })
 
-const tourSchema = mongoose.Schema({
-    name:{
-        type:String,
-        required:[true,'name is required'],
-        unique:true
-    },
-    rating:{
-        type:Number,
-        default:4.5},
-    price:{
-        type:Number,
-        required:[true,'price is required']}
-})
+
 
 const port = process.env.PORT||3000
 app.listen(port, () => {
