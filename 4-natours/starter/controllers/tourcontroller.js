@@ -69,18 +69,18 @@ exports.createTour = async (req, res) => {
 
 exports.updateTour = async (req, res) => {
     try {
-    const tour = await Tour.findByIdAndUpdate(req.params.id, req.body,{
-        new:true,
-        runValidators:true 
-    });
-    console.log(req.body);
-    // tour.duration = req.body.duration
-    res.status(200).json({
-        status: "success in update",
-        data: {
-            tour
-        }
-    })
+        const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
+        console.log(req.body);
+        // tour.duration = req.body.duration
+        res.status(200).json({
+            status: "success in update",
+            data: {
+                tour
+            }
+        })
     } catch (error) {
         res.status(400).json({
             status: 'fail',
@@ -93,17 +93,17 @@ exports.updateTour = async (req, res) => {
 exports.deleteTour = async (req, res) => {
 
     try {
-     await Tour.findByIdAndDelete(req.params.id);
-     res.status(204).json({
-        status: 'success'
-    })
+        await Tour.findByIdAndDelete(req.params.id);
+        res.status(204).json({
+            status: 'success'
+        })
     } catch (error) {
         res.status(400).json({
             status: 'fail',
             message: 'there was some error deleting',
-            err:error
+            err: error
         })
     }
 
-   
+
 }
