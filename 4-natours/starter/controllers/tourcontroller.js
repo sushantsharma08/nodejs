@@ -1,13 +1,16 @@
+const { query } = require('express');
 const { findByIdAndDelete } = require('./../models/tourModel')
 const Tour = require('./../models/tourModel')
 
 exports.getAllTours = async (req, res) => {
     try {
-        const tours = await Tour.find()
+        const tours = await Tour.find(req.query);
+        console.log(req.query);
         res
             .status(200)
             .json({
                 status: 'success',
+                length: tours.length,
                 data: {
                     tours
                 }
