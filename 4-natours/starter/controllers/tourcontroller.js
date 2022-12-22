@@ -4,15 +4,19 @@ const Tour = require('./../models/tourModel')
 
 exports.getAllTours = async (req, res) => {
     try {
+        //BIULD QUERY 
         const queryObj= {...req.query};
         const excludeFields = ['page','sort','limit','feilds'];
         excludeFields.forEach(el=>delete queryObj[el]);
 
         const query = Tour.find(queryObj);
 
-        const query = await Tour.find()
-        .where().equals()
-        .where().equals()
+        // const query =  Tour.find()
+        // .where().equals()
+        // .where().equals()
+
+        // EXECUTE THE QUERY
+
         const tours = await query;
         res
             .status(200)
